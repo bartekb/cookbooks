@@ -51,6 +51,12 @@ after_fork do |server, worker|
     ActiveRecord::Base.establish_connection
   end
 
+  if defined? Sidekiq
+    Sidekiq.configure_client do |config|
+      config.redis = { :url => 'redis://redistogo:6c12d7b74ea33172711e04731c21f32c@grideye.redistogo.com:9522/' }
+    end
+  end
+
   if defined? AnalyticsRuby
     Analytics = AnalyticsRuby
     Analytics.init({

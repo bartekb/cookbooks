@@ -53,7 +53,7 @@ after_fork do |server, worker|
 
   if defined? Sidekiq
     Sidekiq.configure_client do |config|
-      config.redis = { :url => 'redis://redistogo:6c12d7b74ea33172711e04731c21f32c@grideye.redistogo.com:9522/' }
+      config.redis = { :url => 'redis://redistogo:1235280a78c94b664841b8fd064c6ecd@crestfish.redistogo.com:9744/', :size => 2 }
     end
   end
 
